@@ -1,0 +1,8 @@
+services:
+  cerebro:
+    image: lmenezes/cerebro
+    ports:
+    - 9000:9000
+    network_mode: host
+    command:
+    - -Dhosts.0.host=http://localhost:8888

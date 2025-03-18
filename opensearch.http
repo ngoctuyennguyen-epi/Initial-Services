@@ -1,0 +1,46 @@
+POST https://localhost:9200/_analyze HTTP/1.1
+content-type: application/json
+Authorization: Basic admin admin
+
+{
+    "text": "2 guys walk into     a bar, but the third..... DUCK!!! :-)",
+    "char_filter": [],
+    "tokenizer": "standard",
+    "filter": ["lowercase"]
+}
+
+###
+POST https://localhost:9200/_analyze HTTP/1.1
+content-type: application/json
+Authorization: Basic admin admin
+
+{
+    "text": "2 guys walk into     a bar, but the third..... DUCK!!! :-)",
+    "analyzer": "keyword"
+}
+
+###
+POST https://localhost:9200/_analyze HTTP/1.1
+content-type: application/json
+Authorization: Basic admin admin
+
+{
+    "text": ["string is simple", "merge everything"],
+    "analyzer": "standard"
+}
+
+###
+PUT https://localhost:9200/reviews HTTP/1.1
+content-type: application/json
+Authorization: Basic admin admin
+
+{
+    "mapping": {
+        "properties": {
+            "rating": {},
+            "content": {},
+            "product_id": {},
+            "author": {}
+        }
+    }
+}

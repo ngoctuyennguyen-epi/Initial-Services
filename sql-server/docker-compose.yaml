@@ -1,10 +1,18 @@
-version: '3.9'
-
 services:
-  SQLServer:
-    image: "mcr.microsoft.com/azure-sql-edge:latest"
+  azuresqledge:
+    # image: "mcr.microsoft.com/azure-sql-edge:latest"
+    image: "mcr.microsoft.com/mssql/server:2022-latest"
+    # privileged: true
+    # cap_add:
+    #   - ALL
+    user: "root"
     ports:
       - 1433:1433
     environment:
-      - ACCEPT_EULA=1
-      - MSSQL_SA_PASSWORD=devLab@0810
+      - ACCEPT_EULA=Y
+      - MSSQL_SA_PASSWORD=Admin123!
+    # volumes:
+    #   - ~/docker/sql/mssql/data:/var/opt/mssql/data
+    #   - ~/docker/sql/mssql/log:/var/opt/mssql/log
+    #   - ~/docker/sql/mssql/secrets:/var/opt/mssql/secrets
+      # - ~/docker/sql/sqlserver/:/var/opt/sqlserver/
